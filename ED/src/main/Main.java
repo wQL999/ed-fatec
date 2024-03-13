@@ -44,16 +44,23 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Invalido!");
 		}
-		
+		*/
 		// ORDENAÇÃO
 		OrdenacaoController ordCont = new OrdenacaoController();
 		
-		int v[] = {74,20,74,87,81,16,25,99,44,58};
+		//int v[] = {74,20,74,87,81,16,25,99,44,58};
 		
-		ordCont.bubbleSort(v);
-		ordCont.mergeSort(v);
-		ordCont.printArray(v);
-		*/
+		int v[] = new int[150000];
+		for(int i = 0; i < 150000; i++) {
+			v[i] = (int)(Math.random()*100);
+		}
+		
+		//ordCont.bubbleSort(v);
+		//ordCont.mergeSort(v);
+		//ordCont.quickSort(v);
+		//ordCont.printArray(v);
+		ordCont.medirTempo(v);
+		
 		
 	}
 

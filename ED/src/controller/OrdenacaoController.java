@@ -63,6 +63,66 @@ public class OrdenacaoController {
 		
 	}
 	
+	public void quickSort(int v[]) {
+		qSort(v, 0, v.length-1);
+	}
+	
+	private void qSort(int v[], int l, int r) {
+		if(l < r) {
+			int piv = partition(v, l, r);
+			qSort(v, l, piv-1);
+			qSort(v, piv+1, r);
+		}
+	}
+	
+	private int partition(int v[], int l, int r) {
+		int piv = v[l];
+		int i = l;
+		
+		for(int j = l; j <= r; j++) {
+			if(v[j] <= piv) {
+				int swap = v[i];
+				v[i] = v[j];
+				v[j] = swap;
+				i++;
+			}
+		}
+		i--;
+		int swap = v[i];
+		v[i] = v[l];
+		v[l] = swap;
+		
+		return i;
+	}
+	
+	public void medirTempo(int[] v) {
+		double tempoInitial;
+		double tempoFinal;
+		double tempo;
+		/*
+		double tempoInitial = System.nanoTime();
+		bubbleSort(v);
+		double tempoFinal = System.nanoTime();
+		double tempo = tempoFinal - tempoInitial;
+		tempo /= Math.pow(10, 9);
+		System.out.println("BubbleSort: " + tempo + "s." );
+		*/
+		tempoInitial = System.nanoTime();
+		mergeSort(v);
+		tempoFinal = System.nanoTime();
+		tempo = tempoFinal - tempoInitial;
+		tempo /= Math.pow(10, 9);
+		System.out.println("MergeSort: " + tempo + "s." );
+		
+		tempoInitial = System.nanoTime();
+		quickSort(v);
+		tempoFinal = System.nanoTime();
+		tempo = tempoFinal - tempoInitial;
+		tempo /= Math.pow(10, 9);
+		System.out.println("QuickSort: " + tempo + "s." );
+		
+	}
+	
 	
 	
 	
